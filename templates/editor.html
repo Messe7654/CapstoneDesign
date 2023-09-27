@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../static/css/editor.css">
+</head>
+<body>
+    <canvas id="bg-canvas" style="background-color: rgb(218, 220, 214);"></canvas>
+    <canvas id="canvas"></canvas>
+    <section id="menu-bar">
+        <ul id="tool">
+            <li><img src="../static/img/scissors.svg" alt="" id="cut"></li>
+            <li><img src="../static/img/arrow-clockwise.svg" alt="" id="clockwise"></li>
+            <li><img src="../static/img/arrow-counterclockwise.svg" alt="" id="counter-clockwise"></li>
+            <li><img src="../static/img/symmetry-horizontal.svg "alt="" id="sym-horizon"></li>
+            <li><img src="../static/img/symmetry-vertical.svg" alt="" id="sym-vertical"></li>
+            <li><img src="../static/img/free-icon-slice-4927436.png" alt="" id="draw"></li>
+            <li><img src="../static/img/free-icon-text-editor-4927335.png" alt="" id="text"></li>
+            <li><img src="../static/img/square.svg" alt="" id="square"></li>
+            <li><img src="../static/img/circle.svg" alt="" id="circle"></li>
+            <li><img src="../static/img/brightness-high.svg" alt="" id="bright"></li>
+            <li><img src="../static/img/blur.png" alt="" id="blur"></li>
+        </ul>
+        <section class="option">
+            <div>옵션1</div>
+            <hr>
+            <div id="option1"></div>
+            <div>옵션2</div>
+            <hr>
+            <div id="option2"></div>
+        </section>
+        <section class="color-option">
+            <input type="color" id="color">
+        </section>
+    </section>
+    <section id="bottom-bar" style="text-align:center;">
+        <ul class="unre"style="vertical-align: middle; float: left;">
+            <li><img class="Ic" src="../static/img/arrow-left-circle.svg" alt=""><br>
+            <div>실행 취소</div></li>
+
+            <li><img class="Ic" src="../static/img/arrow-right-circle.svg" alt=""><br>
+            <div>다시 실행</div></li>
+
+            
+        </ul>
+        <button>닫기</button>
+        <button>다운로드</button>
+    </section>
+    <section id="right-bar">
+        <div style="font-size: 150%; text-align: center;"><B>Layer</B></div>
+        <hr>
+    </section>
+
+</body>
+</html>
