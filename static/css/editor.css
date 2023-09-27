@@ -1,0 +1,108 @@
+#menu-bar
+{
+background-color:#676d73;
+bottom:10%;
+position:absolute;
+width:15%;
+left:0;
+top:0px;
+}
+
+#bg-canvas
+{
+    position: absolute;
+    left: 15%;
+    width: 65%;
+    height: 90%;
+    top: 0px;
+}
+
+#bottom-bar
+{
+    position: absolute;
+    left: 0;
+    height: 10%;
+    width: 100%;
+    top: 90%;
+    background-color:rgba(22, 22, 21, 0.866);
+    text-align: center;
+    vertical-align: middle;
+    margin-top: 0%;
+    margin: 0 auto;
+}
+
+#bottom-bar ul
+{
+    width: 30%;
+    height: 80%;
+    margin-top: 0%;
+    margin-left: 35%;
+    display: inline-block;
+    vertical-align: middle;
+
+}
+#bottom-bar ul li
+{
+    position: relative;
+    display: inline-block;
+    height: 100%;
+
+}
+#bottom-bar ul li div
+{
+    margin: 0%;
+    padding: 0%;
+    height: 20%;
+}
+.Ic
+{
+    height: 25%;
+}
+
+#right-bar
+{
+    position: absolute;
+    height: 90%;
+    width: 20%;
+    left: 80%;
+    bottom: 10%;
+    right: 0%;
+    background-color:rgba(94, 97, 103, 0.212);
+}
+li{
+    list-style-type: none;
+}
+#tool
+{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 10px;
+}
+#tool li{
+    margin: 1%;
+}
+button{
+    height: 50%;
+    
+}
+#tool img{
+
+    height: 30px;
+}
+.option
+{
+    visibility: hidden;
+}
+.color-option
+{
+    visibility: hidden;
+}
+.unre
+{
+    filter: invert();
+    padding-top: 1%;
+}
