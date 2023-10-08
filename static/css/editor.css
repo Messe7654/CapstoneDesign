@@ -1,3 +1,10 @@
+body,html
+{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
 #menu-bar
 {
 background-color:#676d73;
@@ -7,15 +14,142 @@ width:15%;
 left:0;
 top:0px;
 }
+#tool
+{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 10px;
 
+}
+
+#tool li{
+    width: 20%;
+    margin: 2.5%;
+
+}
+
+#tool li:hover .tip {
+    visibility: visible;
+    transition: 1s linear;
+    opacity: 1;
+}
+#tool li.Option:hover ~ .tip {
+    visibility: hidden;
+    transition: 1s linear;
+    opacity: 0;
+}
+.tip{
+    position: absolute;
+    left: calc(100% + 1rem);
+    top: 3%;
+    width:50%;
+    font-size: 70%;
+    background-color: white;
+    border-radius: 8%;
+    visibility: hidden;
+    opacity: 0;
+    padding: 3%;
+
+}
+.tip::before{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 10000;
+    border-top: 10px solid transparent;
+    border-right: 10px solid white;
+    border-left: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    left: -19px;
+    top: 50%;
+    transform: translatey(-50%);
+
+}
+#tool img{
+    width: 90%;
+}
+#tool li:not(.selected)
+{
+    background-color: #676d73;
+}
+#tool li.selected{
+    background-color: #a2a7ac;
+    border-radius: 0.5rem;
+}
+
+#tool li:hover:not(.selected){
+    background-color: #deb11eef;
+    opacity: 0.7;
+    border-radius: 0.5rem;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: inner-spin-button;    
+    opacity: 1;
+}
+label
+{
+    width: 100%;
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 0;
+    color: beige;
+}
+hr{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#option
+{
+    width: 100%;
+    margin-top: 10%;
+    box-sizing: border-box;
+    color : rgb(198, 187, 150)
+}
+.Option{
+    box-sizing: border-box;
+}
+#option input[type=color]
+{
+    width: 15%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent;
+
+}
+#option input[type=color]::-webkit-color-swatch{
+    border-radius: 15%;
+    border: none;
+}
+#option input[type=color]::-moz-color-swatch
+{
+    border-radius: 15%;
+    border: none;
+}
+#option input[typ=range]
+{
+    width: 60%;
+}
+
+#option.select
+{
+    visibility: visible;
+}
 #bg-canvas
 {
+    background-color: rgb(218, 220, 214);
     position: absolute;
     left: 15%;
     width: 65%;
     height: 90%;
     top: 0px;
 }
+
 
 #bottom-bar
 {
@@ -29,16 +163,19 @@ top:0px;
     vertical-align: middle;
     margin-top: 0%;
     margin: 0 auto;
+
 }
 
 #bottom-bar ul
 {
+    box-sizing: content-box;
     width: 30%;
-    height: 80%;
+    height: 100%;
     margin-top: 0%;
     margin-left: 35%;
     display: inline-block;
     vertical-align: middle;
+    margin-right: 5%;
 
 }
 #bottom-bar ul li
@@ -52,11 +189,13 @@ top:0px;
 {
     margin: 0%;
     padding: 0%;
-    height: 20%;
+    height: 40%;
 }
 .Ic
 {
-    height: 25%;
+    height: 40%;
+    margin-top: 10%;
+    margin-bottom: 0%;
 }
 
 #right-bar
@@ -72,27 +211,14 @@ top:0px;
 li{
     list-style-type: none;
 }
-#tool
-{
-    display: flex;
-    flex-direction: row;
-    text-align: center;
-    flex-wrap: wrap;
-    padding-left: 15%;
-    padding-right: 15%;
-    padding-top: 10px;
-}
-#tool li{
-    margin: 1%;
-}
+
 button{
-    height: 50%;
+    height: 60%;
+    margin-top: 1%;
+    margin-left: 3%;
     
 }
-#tool img{
 
-    height: 30px;
-}
 .option
 {
     visibility: hidden;
@@ -104,5 +230,7 @@ button{
 .unre
 {
     filter: invert();
-    padding-top: 1%;
+}
+.unre li:active{
+    transform: scale(0.95);
 }
