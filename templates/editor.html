@@ -12,127 +12,161 @@
 </head>
 
 <body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-        crossorigin="anonymous"></script>
-    <canvas id="bg-canvas"></canvas>
-    <canvas id="canvas"></canvas>
-    <section id="menu-bar">
-        <ul id="tool">
-            <li class="selected" id="cut"><img src="{{ url_for('static', filename='img/scissors.svg') }}" alt="" title="자르기">
-                <div class="tip">
-                    <p>자르기</p><span>선택한 영역을 자릅니다.</span>
-                </div>
-            </li>
-            <li><img src="{{ url_for('static', filename='img/arrow-clockwise.svg') }}" alt="" id="clockwise"
-                    title="시계방향 회전">
-                <div class="tip">
-                    <p>시계방향 회전</p><span>이미지를 시계방향으로 회전합니다.</span>
-                </div>
-            </li>
-            <li id="counter-clockwise"><img src="{{ url_for('static', filename='img/arrow-counterclockwise.svg') }}" alt=""
-                     title="시계반대방향 회전">
-                <div class="tip">
-                    <p>시계반대방향 회전</p><span>이미지를 시계반대방향으로 회전합니다.</span>
-                </div>
-            </li>
-            <li id="sym-horizon"><img src="{{ url_for('static', filename='img/symmetry-horizontal.svg') }} " alt="" 
-                    title="상하 대칭">
-                <div class="tip">
-                    <p>상하대칭</p><span>이미지를 상하대칭시킵니다.</span>
-                </div>
-            </li id="sym-vertical">
-            <li><img src="{{ url_for('static', filename='img/symmetry-vertical.svg') }}" alt="" 
-                    title="좌우 대칭">
-                <div class="tip">
-                    <p>좌우대칭</p><span>이미지를 좌우대칭시킵니다.</span>
-                </div>
-            </li>
-            <li id="draw"><img src="{{ url_for('static', filename='img/free-icon-slice-4927436.png') }}" alt="" 
-                    title="그리기">
-                <div class="tip">
-                    <p>그리기</p><span>이미지를 좌우대칭시킵니다.</span>
-                </div>
-            </li>
-            <li id="text"><img src="{{ url_for('static', filename='img/free-icon-text-editor-4927335.png') }}" alt="" 
-                    title="텍스트">
-                <div class="tip">
-                    <p>텍스트</p><span>텍스트 창을 생성햐여 텍스트를 입력합니다.</span>
-                </div>
-            </li>
-            <li id="square"><img src="{{ url_for('static', filename='img/square.svg') }}" alt=""  title="사각형">
-                <div class="tip">
-                    <p>사각형</p><span>사각형 도형을 그립니다.</span>
-                </div>
-            </li>
-            <li id="circle"><img src="{{ url_for('static', filename='img/circle.svg') }}" alt=""  title="원">
-                <div class="tip">
-                    <p>원</p><span>원 도형을 그립니다.</span>
-                </div>
-            </li>
-            <li  id="bright"><img src="{{ url_for('static', filename='img/brightness-high.svg') }}" alt="" title="밝기">
-                <div class="tip">
-                    <p>밝기</p><span>이미지의 밝기를 조정합니다.</span>
-                </div>
-            </li>
-            <li id="blur"><img src="{{ url_for('static', filename='img/blur.png') }}" alt=""  title="흐림">
-                <div class="tip">
-                    <p>흐림</p><span>이미지에 흐림 효과를 적용합니다.</span>
-                </div>
-            </li>
-            <li  id="AI"><img src="{{ url_for('static', filename='img/free-icon-ai-165406.png') }}" alt="" title="AI보정">
-                <div class="tip">
-                    <p>AI보정</p><span>AI를 이용해 이미지를 자동보정합니다..</span>
-                </div>
-            </li>
-        </ul>
-        <label for="option"><p>옵션</p></label>
-        <hr>
-        <ul id="option">
-            <div class="Option draw square circle"><span>선 두께 </span><input type="number" step="2" value="10" min="6"
-                    max="30">px</div>
-            <div class="Option draw"><span>선 색상 </span><input type="color"></div>
-            <div class="Option text"><span>글자 크기 </span><input type="number" step="2" value="10" min="6" max="30">px
+    <div id="upload" class="activate">
+        <h1>컴퓨터공학 종합 설계</h1>
+        <h2 style="font-style: italic">-팀 포토그래퍼-</h2>
+        <input type="file" id="inputFile" accept="image/jpg, image/jpeg, image/png, image/gif, image/bmp"><br>
+        <input type="text" id="inputUrl" placeholder="Image URL"><button type="button" id="URLbutton">확인</button>
+    </div>
+    <div id="editor" class="hidden">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+        <canvas id="bg-canvas"></canvas>
+        <canvas id="canvas"></canvas>
+        <section id="menu-bar">
+            <ul id="tool">
+                <li class="selected" id="cut"><img src="{{ url_for('static', filename='img/scissors.svg') }}" alt=""
+                        title="자르기">
+                    <div class="tip">
+                        <p>자르기</p><span>선택한 영역을 자릅니다.</span>
+                    </div>
+                </li>
+                <li><img src="{{ url_for('static', filename='img/arrow-clockwise.svg') }}" alt="" id="clockwise"
+                        title="시계방향 회전">
+                    <div class="tip">
+                        <p>시계방향 회전</p><span>이미지를 시계방향으로 회전합니다.</span>
+                    </div>
+                </li>
+                <li id="counter-clockwise"><img src="{{ url_for('static', filename='img/arrow-counterclockwise.svg') }}"
+                        alt="" title="시계반대방향 회전">
+                    <div class="tip">
+                        <p>시계반대방향 회전</p><span>이미지를 시계반대방향으로 회전합니다.</span>
+                    </div>
+                </li>
+                <li id="sym-horizon"><img src="{{ url_for('static', filename='img/symmetry-horizontal.svg') }} " alt=""
+                        title="상하 대칭">
+                    <div class="tip">
+                        <p>상하대칭</p><span>이미지를 상하대칭시킵니다.</span>
+                    </div>
+                </li id="sym-vertical">
+                <li><img src="{{ url_for('static', filename='img/symmetry-vertical.svg') }}" alt="" title="좌우 대칭">
+                    <div class="tip">
+                        <p>좌우대칭</p><span>이미지를 좌우대칭시킵니다.</span>
+                    </div>
+                </li>
+                <li id="draw"><img src="{{ url_for('static', filename='img/free-icon-slice-4927436.png') }}" alt=""
+                        title="그리기">
+                    <div class="tip">
+                        <p>그리기</p><span>이미지를 좌우대칭시킵니다.</span>
+                    </div>
+                </li>
+                <li id="text"><img src="{{ url_for('static', filename='img/free-icon-text-editor-4927335.png') }}"
+                        alt="" title="텍스트">
+                    <div class="tip">
+                        <p>텍스트</p><span>텍스트 창을 생성햐여 텍스트를 입력합니다.</span>
+                    </div>
+                </li>
+                <li id="square"><img src="{{ url_for('static', filename='img/square.svg') }}" alt="" title="사각형">
+                    <div class="tip">
+                        <p>사각형</p><span>사각형 도형을 그립니다.</span>
+                    </div>
+                </li>
+                <li id="circle"><img src="{{ url_for('static', filename='img/circle.svg') }}" alt="" title="원">
+                    <div class="tip">
+                        <p>원</p><span>원 도형을 그립니다.</span>
+                    </div>
+                </li>
+                <li id="bright"><img src="{{ url_for('static', filename='img/brightness-high.svg') }}" alt=""
+                        title="밝기">
+                    <div class="tip">
+                        <p>밝기</p><span>이미지의 밝기를 조정합니다.</span>
+                    </div>
+                </li>
+                <li id="blur"><img src="{{ url_for('static', filename='img/blur.png') }}" alt="" title="흐림">
+                    <div class="tip">
+                        <p>흐림</p><span>이미지에 흐림 효과를 적용합니다.</span>
+                    </div>
+                </li>
+                <li id="AI"><img src="{{ url_for('static', filename='img/free-icon-ai-165406.png') }}" alt=""
+                        title="AI보정">
+                    <div class="tip">
+                        <p>AI보정</p><span>AI를 이용해 이미지를 자동보정합니다..</span>
+                    </div>
+                </li>
+            </ul>
+            <label for="option">
+                <p>옵션</p>
+            </label>
+            <hr>
+            <div id="option">
+                <ul id="drawOption" class="option">
+                    <div class="Option draw"><span>선 두께 </span><input type="number" step="2" value="10"
+                            min="6" max="30">px</div>
+                    <div class="Option draw"><span>선 색상 </span><input type="color"></div>
+                </ul>
+                <ul id="textOption" class="option">
+                    <div class="Option text"><span>글자 크기 </span><input type="number" step="2" value="10" min="6"
+                            max="30">px
+                    </div>
+                    <div class="Option text"><span>글자 색상 </span><input type="color"></div>
+                </ul>
+                <ul id="squareOption" class="option">
+                    <div class="Option draw square circle"><span>선 두께 </span><input type="number" step="2" value="10"
+                            min="6" max="30">px</div>
+                    <div class="Option square circle"><span>선 색상 </span><input type="color"></div>
+                    <div class="Option square circle"><span>테두리 색상 </span><input type="color"></div>
+                    <div class="Option square circle"><span>채우기 색상 </span><input type="color"></div>
+                </ul>
+                <ul id="circleOption" class="option">
+                    <div class="Option draw square circle"><span>선 두께 </span><input type="number" step="2" value="10"
+                            min="6" max="30">px</div>
+                    <div class="Option square circle"><span>선 색상 </span><input type="color"></div>
+                    <div class="Option square circle"><span>테두리 색상 </span><input type="color"></div>
+                    <div class="Option square circle"><span>채우기 색상 </span><input type="color"></div>
+                </ul>
+                <ul id="brightOption" class="option">
+                    <div class="Option bright blur"><span>강도 </span><input type="range" min="1" max="100"></div>
+                </ul>
+                <ul id="blurOption" class="option">
+                    <div class="Option bright blur"><span>강도 </span><input type="range" min="1" max="100"></div>
+                </ul>
             </div>
-            <div class="Option text"><span>글자 색상 </span><input type="color"></div>
-            <div class="Option square circle"><span>테두리 색상 </span><input type="color"></div>
-            <div class="Option square circle"><span>채우기 색상 </span><input type="color"></div>
-            <div class="Option bright blur"><span>강도 </span><input type="range" min="1" max="100"></div>
-            <section class="option">
-        </ul>
-
-        
-    </section>
-    <section class="color-option">
-        <input type="color" id="color">
-    </section>
-    </section>
-
-
-    <section id="right-bar">
-        <div style="font-size: 150%; text-align: center;"><B>Layer</B></div>
-        <hr>
-    </section>
-    <section id="bottom-bar" style="text-align:center;">
-        <ul class="unre" style="vertical-align: middle; float: left;">
-            <li><img class="Ic" src="{{ url_for('static', filename='img/arrow-left-circle.svg') }}" alt=""
-                    id="undo"><br>
-                <div>실행 취소</div>
-            </li>
-
-            <li><img class="Ic" src="{{ url_for('static', filename='img/arrow-right-circle.svg') }}" alt=""
-                    id="redo"><br>
-                <div>다시 실행</div>
-            </li>
-
-
-        </ul>
-        <button type="button" class="btn btn-light">닫기</button>
-        <button type="button" class="btn btn-primary">다운로드</button>
-    </section>
 
 
 
+        </section>
+        <section class="color-option">
+            <input type="color" id="color">
+        </section>
+        </section>
+
+
+        <section id="right-bar">
+            <div style="font-size: 150%; text-align: center;"><B>Layer</B></div>
+            <hr>
+            <ul id="layer"></ul>
+        </section>
+        <section id="bottom-bar" style="text-align:center;">
+            <ul class="unre" style="vertical-align: middle; float: left;">
+                <li><img class="Ic" src="{{ url_for('static', filename='img/arrow-left-circle.svg') }}" alt=""
+                        id="undo"><br>
+                    <div>실행 취소</div>
+                </li>
+
+                <li><img class="Ic" src="{{ url_for('static', filename='img/arrow-right-circle.svg') }}" alt=""
+                        id="redo"><br>
+                    <div>다시 실행</div>
+                </li>
+
+
+            </ul>
+            <button type="button" id="close" class="btn btn-light">닫기</button>
+            <button type="button" class="btn btn-primary">다운로드</button>
+        </section>
+
+
+    </div>
     <script type="text/javascript" src="{{url_for('static',filename='js/editor.js')}}"></script>
 </body>
 
