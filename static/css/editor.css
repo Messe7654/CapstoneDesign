@@ -1,9 +1,33 @@
 body,html
 {
+    position: absolute;
     margin: 0;
     padding: 0;
     height: 100%;
     width: 100%;
+}
+#upload
+{
+    position: absolute;
+    text-align: center;
+    padding: 10%;
+    height: 100%;
+    width: 100%;
+}
+#editor
+{
+    position: absolute;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.activate
+{
+    visibility: visible;
+}
+.hidden
+{
+    visibility: hidden;
 }
 #menu-bar
 {
@@ -106,10 +130,12 @@ hr{
 }
 #option
 {
+    position: absolute;
     width: 100%;
     margin-top: 10%;
     box-sizing: border-box;
-    color : rgb(198, 187, 150)
+    color : rgb(198, 187, 150);
+    
 }
 .Option{
     box-sizing: border-box;
@@ -212,7 +238,7 @@ li{
     list-style-type: none;
 }
 
-button{
+#editor button{
     height: 60%;
     margin-top: 1%;
     margin-left: 3%;
@@ -222,10 +248,13 @@ button{
 .option
 {
     visibility: hidden;
+    position: absolute;
+
+    top: 0;
 }
-.color-option
+.select
 {
-    visibility: hidden;
+    visibility: visible;
 }
 .unre
 {
