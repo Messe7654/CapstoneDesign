@@ -1,21 +1,16 @@
 
 import numpy as np
 import tensorflow as tf
-import tensorflow_datasets as tfds
+#import tensorflow_datasets as tfds
 import matplotlib.pyplot as plt
 
+
 from tensorflow import keras
-from tensorflow.keras import layers
+from keras import layers
 
 AUTOTUNE = tf.data.AUTOTUNE
 
-from google.colab import drive
-drive.mount('/content/gdrive')
-rootPath = '/content/gdrive/MyDrive/Colab Notebooks/capstone/'
 import cv2
-from google.colab.patches import cv2_imshow
-
-
 
 class EDSRModel(tf.keras.Model):
     def train_step(self, data):
@@ -95,12 +90,9 @@ def make_model(num_filters, num_of_residual_blocks):
 
 model = make_model(num_filters=64, num_of_residual_blocks=16)
 
-"""## Run inference on new images and plot the results"""
 
 def plot_results(lowres, preds):
-    """
-    Displays low resolution image and super resolution image
-    """
+
     plt.figure(figsize=(24, 14))
     plt.subplot(132), plt.imshow(lowres), plt.title("Low resolution")
     plt.subplot(133), plt.imshow(preds), plt.title("Prediction")
@@ -108,26 +100,18 @@ def plot_results(lowres, preds):
 
 import os
 
-checkpoint_path = rootPath + "training_1/cp.ckpt"
+# training1/cp.ckpt의 경로 입니다
+checkpoint_path = "C:/Users/USER001/OneDrive/이경환/OneDrive/문서/4-2학기/종설/CapstoneDesign-main/AI/training_1/cp.ckpt"
 checkpoint_dir = os.path.dirname(checkpoint_path)
 model.load_weights(checkpoint_path)
 
-path= rootPath + 'pic3.jpg'
-image = cv2.imread(path)
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-image2 = cv2.resize(image, dsize=(0,0), fx= 0.5, fy = 0.5)
-pred = model.predict_step(image2)
-plot_results(image2, pred)
+from PIL import Image
 
-path= rootPath + 'pic4.png'
-image = cv2.imread(path)
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-pred = model.predict_step(image)
-plot_results(image, pred)
+# 이미지 경로
+path= 'C:/Users/USER001/OneDrive/이경환/OneDrive/문서/4-2학기/종설/CapstoneDesign-main/AI/img/images.jpg'
+image = Image.open(path)
 
-path= rootPath + 'pic5.png'
-image = cv2.imread(path)
-image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+# pred에 업스케일링된 이미지가 저장됩니다
 pred = model.predict_step(image)
 plot_results(image, pred)
 
